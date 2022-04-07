@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Starting-Scene</title>
-		<link rel="stylesheet" type="text/css" href="./Style.css" />
+		<link rel="stylesheet" type="text/css" href="../Style/Style.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../Style/Pausescene.css" />-->
 	</head>
-	<body style="background-color: black;">
+	<body style="background-color: #3F7FBF;">
 		<iframe src="./Logo.html" style="height: 100%; position: fixed; width: 100%;"></iframe>
 
 		<pre id="stream-ending">develeon64@twitch-stream:~$ sudo ./stream.sh --start <span id="countdown"></span>
@@ -16,16 +17,17 @@
 
 		<script>
 			const sleep = ms => new Promise(r => setTimeout(r, ms));
-			let countSeconds = 600;
+			let countSeconds = 300;
 			let circleCount = 0;
 			let dotCount = 0;
 
 			async function main () {
 				await elementObject("Bot hochfahren", "Bot ist betriebsbereit und überwacht den Chat", 128);
 				await elementObject("Chat starten", "Chat ist gestartet und funktionsbereit", 64);
+				await elementObject("Weitere Funktionen hinzufügen", "Weitere Funktionen müssen noch hinzugefügt werden!", 1024, "#BF3F7F");
 
 				await sleep(2048);
-				document.body.innerHTML += `<pre><span style="color: #BF3F7F">DER STREAM ENDET JETZT!</span> <span style="color: #BF7F3F">Bis zum nächsten Mal! 👋</span></pre>`;
+				document.body.innerHTML += `<pre><span style="color: #BF3F7F">DER STREAM SOLLTE JETZT JEDEN MOMENT STARTEN!</span><br /><span style="color: #BF7F3F">Wir warten nur noch auf den Streamer, @Develeon64!</span></pre>`;
 				window.scrollTo(0, document.body.scrollHeight);
 			}
 
