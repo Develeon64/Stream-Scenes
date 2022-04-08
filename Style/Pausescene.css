@@ -1,0 +1,21 @@
+body {
+	background-color: #3F7FBF;
+}
+
+pre {
+	margin: 8px;
+}
+
+span#error {
+	color: #BF3F7F;
+	font-size: 64px;
+	font-weight: bold;
+	line-height: 80px;
+	text-decoration: underline;
+}
+
+span#smile {
+	color: #BF7F3F;
+	font-size: 128px;
+	line-height: 160px;
+}

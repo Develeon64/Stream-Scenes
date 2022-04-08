@@ -2,116 +2,33 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>Starting-Scene</title>
+		<title>Pause-Scene</title>
 		<link rel="stylesheet" type="text/css" href="../Style/Style.css" />
-		<!--<link rel="stylesheet" type="text/css" href="../Style/Pausescene.css" />-->
+		<link rel="stylesheet" type="text/css" href="../Style/Pausescene.css" />
 	</head>
-	<body style="background-color: #3F7FBF;">
-		<iframe src="./Logo.html" style="height: 100%; position: fixed; width: 100%;"></iframe>
+	<body>
+		<iframe src="./Logo.html"></iframe>
 
-		<pre id="stream-ending">develeon64@twitch-stream:~$ sudo ./stream.sh --start <span id="countdown"></span>
-<span  style="color: #3FBF7F;">┌────────────────┐
-│ Stream-Start! <span id="dots">...</span> │
-╘════════════════╛</span>
-		</pre>
+		<pre>Leider gab es ein Problem mit der Szene:<br />
+<span id="error">Stream wurde pausiert!</span><br />
+<span id="smile">    :(</span><br />
+
+In diesem Falle einfach zurücklehnen und die Ruhe genießen.
+Wir arbeiten an der Pause und sind gleich wieder zurück.
+
+Sollte das Problem weiterhin bestehen,
+einfach unter <a href="">https://www.twtich.tv/develeon64</a> melden!
+
+In dringenden Notfällen:
+- Ruhe bewahren,
+- die Getränkerücknahmestelle besuchen,
+- auf dem Weg Nahrung in Form von Essen und/oder Trinken mitbringen
+und tief durchatmen!
+
+Diese Pause ist jetzt <span id="countup">00:00</span> lang und sollte bald beendet sein.</pre>
 
 		<div id="pagend"></div>
 		<audio type="audio/mp3" src="../Files/Pausescene.mp3" autoplay loop></audio>
-		<script>
-			const sleep = ms => new Promise(r => setTimeout(r, ms));
-			let countSeconds = 300;
-			let circleCount = 0;
-			let dotCount = 0;
-
-			async function main () {
-				await elementObject("Bot hochfahren", "Bot ist betriebsbereit und überwacht den Chat", 128);
-				await elementObject("Chat starten", "Chat ist gestartet und funktionsbereit", 64);
-				await elementObject("Weitere Funktionen hinzufügen", "Weitere Funktionen müssen noch hinzugefügt werden!", 1024, "#BF3F7F");
-
-				await sleep(2048);
-				document.body.innerHTML += `<pre><span style="color: #BF3F7F">DER STREAM SOLLTE JETZT JEDEN MOMENT STARTEN!</span><br /><span style="color: #BF7F3F">Wir warten nur noch auf den Streamer, @Develeon64!</span></pre>`;
-				window.scrollTo(0, document.body.scrollHeight);
-			}
-
-			async function elementObject (startText, endText, count, color = "#7FBF3F") {
-				const element = document.createElement("pre");
-
-				const loading = document.createElement("span");
-				loading.style = "color: #3F7FBF";
-				loading.innerText = "|";
-
-				const caption = document.createElement("span");
-				caption.innerText = ` ${startText}\n`;
-
-				const finish = document.createElement("span");
-				finish.style = `color: ${color};`;
-				finish.innerText = endText;
-
-				element.append(loading);
-				element.append(caption);
-				document.body.insertBefore(element, document.getElementById("pagend"));
-				document.body.insertBefore(document.createElement("br"), document.getElementById("pagend"));
-				window.scrollTo(0, document.body.scrollHeight);
-
-				await circle(loading, count);
-				element.appendChild(finish);
-			}
-
-			async function circle (element, count) {
-				for (let i = 0; i < count; i++) {
-					switch (circleCount) {
-						case 1:
-							element.innerText = "/";
-							circleCount++;
-							break;
-						case 2:
-							element.innerText = "-";
-							circleCount++;
-							break;
-						case 3:
-							element.innerText = "\\";
-							circleCount = 0;
-							break;
-						default:
-							element.innerText = "|";
-							circleCount++;
-							break;
-					}
-					await sleep(128);
-				}
-				element.innerText = "-";
-			}
-
-			async function dots (element) {
-				switch (dotCount) {
-					case 1:
-						element.innerText = ".  ";
-						dotCount++;
-						break;
-					case 2:
-						element.innerText = ".. ";
-						dotCount++;
-						break;
-					case 3:
-						element.innerText = "...";
-						dotCount = 0;
-						break;
-					default:
-						element.innerText = "   ";
-						dotCount++;
-						break;
-				}
-			}
-
-			async function countdown () {
-				const time = `${Math.trunc(countSeconds / 60)}:${(countSeconds % 60).toString().padStart(2, "0")}`;
-				document.getElementById("countdown").innerText = countSeconds > 0 ? `-t=${time}` : "--now";
-				countSeconds--;
-			}
-
-			main();
-			setInterval(() => dots(document.getElementById("dots")), 1024);
-			setInterval(() => countdown(), 1000);
-		</script>
+		<script type="text/javascript" src="../JS/Pausescene.js"></script>
 	</body>
 </html>
