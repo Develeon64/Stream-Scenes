@@ -34,7 +34,7 @@ async function circle (element, count) {
 }
 
 async function countup () {
-	document.getElementById("countup").innerText = countSeconds < 600 ? `${Math.trunc(countSeconds / 60).toString().padStart(2, "0")}:${(countSeconds % 60).toString().padStart(2, "0")}` : "  ∞  ";
+	document.getElementById("countup").innerText = countSeconds < 6000 ? `${Math.trunc(countSeconds / 60).toString().padStart(2, "0")}:${(countSeconds % 60).toString().padStart(2, "0")}` : "  ∞  ";
 	countSeconds++;
 }
 
