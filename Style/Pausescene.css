@@ -19,3 +19,9 @@ span#smile {
 	font-size: 128px;
 	line-height: 160px;
 }
+
+span#link {
+	color: #7F3FBF;
+	font-weight: bold;
+	text-decoration: underline;
+}

@@ -1,5 +1,5 @@
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-let countSeconds = 300;
+let countSeconds = 600;
 let circleCount = 0;
 let dotCount = 0;
 
